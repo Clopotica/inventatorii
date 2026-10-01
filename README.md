@@ -13,6 +13,41 @@ de joasă, jocul se micșorează singur, proporțional, ca să rămână tot viz
 
 ---
 
+## Acces cu utilizator și parolă
+
+Jocul afișează mai întâi un formular de autentificare. Sunt configurate cele 20 de
+conturi `user01`–`user20`, cu parolele distribuite separat de administrator.
+Nu există înregistrare publică. Utilizatorul nu diferențiază literele mari de cele
+mici; parola trebuie introdusă exact.
+
+- „Ieși din cont” închide sesiunea fără să șteargă progresul.
+- Sesiunea se păstrează la reîncărcare în aceeași filă, maximum 8 ore, folosind
+  `sessionStorage`. Dacă browserul blochează stocarea, login-ul funcționează doar
+  până la reîncărcare.
+- Progresul rămâne în browser, separat pentru fiecare cont, în chei precum
+  `inventatorii.v1.user01`. Nu se sincronizează între dispozitive.
+- Progresul anonim anterior (`inventatorii.v1`) este păstrat, dar nu este atribuit
+  automat niciunui cont.
+- Ambele variante, `index.html` și `inventatorii-un-fisier.html`, includ login-ul.
+
+**Limitare acceptată pentru GitHub Pages:** aceasta este o barieră simplă în
+browser, nu autentificare pe server. Codul, verificatorii parolelor și conținutul
+jocului sunt publice; cineva cu cunoștințe tehnice poate ocoli verificarea.
+Parolele sunt stocate ca verificatori PBKDF2-SHA-256, cu salt aleatoriu individual
+și 210.000 de iterații, fără parole în clar în repo. Hash-urile nu fac această
+barieră imposibil de ocolit și nu protejează parole scurte împotriva încercărilor
+offline. Pentru acces securizat este necesar un backend.
+
+Verificarea parolelor folosește Web Crypto: publică prin HTTPS (GitHub Pages) sau
+rulează pe `localhost`. Deschiderea locală prin `file://` depinde de suportul
+browserului pentru Web Crypto în acest context. Dacă lipsește, formularul afișează
+instrucțiuni pentru HTTPS/localhost.
+
+Fișierele pentru login sunt `js/auth.js` și `js/accounts.js`. După orice modificare,
+rulează `node build-artifact.js` pentru a actualiza și versiunea într-un singur fișier.
+
+---
+
 ## Cum pornești jocul
 
 **Varianta 1 — dublu-click.** Deschide `index.html` cu browserul (Chrome, Edge, Firefox).

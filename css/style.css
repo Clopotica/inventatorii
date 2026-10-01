@@ -599,3 +599,38 @@ button:focus-visible, .clue:focus-visible, .lvl:focus-visible {
 @keyframes roleIn { from { opacity: 0; transform: translateX(-14px); } to { opacity: 1; transform: none; } }
 .roles li .why { display: block; font-weight: 600; color: var(--ink); }
 .roles li .why b { color: var(--teal-d); }
+
+/* Autentificare: jocul rămâne ascuns inclusiv înainte de pornirea JavaScript. */
+[hidden] { display: none !important; }
+#gameRoot { height: 100%; }
+.login-wall {
+  position: fixed; inset: 0; overflow-y: auto;
+  display: flex; padding: 24px 16px;
+}
+.login-card {
+  width: min(100%, 420px); margin: auto; padding: clamp(22px, 5vw, 38px);
+  background: var(--card); border: 2px solid #eadbc8;
+  border-radius: 26px; box-shadow: var(--shadow-soft);
+  display: flex; flex-direction: column;
+}
+.login-icon { text-align: center; font-size: 48px; line-height: 1.2; }
+.login-card h1 { margin: 12px 0 0; text-align: center; font-size: clamp(26px, 7vw, 36px); color: var(--blue-d); }
+.login-card > p:first-of-type { text-align: center; margin: 0 0 20px; color: var(--ink-soft); font-size: 18px; }
+.login-card label { font-weight: 700; font-size: 16px; margin: 12px 0 6px; }
+.login-card input {
+  width: 100%; min-width: 0; min-height: 48px; border: 2px solid #d8c9b6;
+  border-radius: 12px; padding: 10px 12px; color: var(--ink); background: #fffdf9;
+  font: 16px var(--font);
+}
+.password-field { display: flex; gap: 8px; }
+.password-field button {
+  flex: none; border: 2px solid #d8c9b6; border-radius: 12px;
+  padding: 8px 12px; color: var(--ink); background: var(--paper); font-size: 14px;
+}
+.login-card input:focus-visible, .login-card button:focus-visible {
+  outline: 3px solid var(--blue); outline-offset: 3px;
+}
+.login-error { color: #b22d25; min-height: 24px; font-size: 15px; margin: 12px 0; }
+.login-card .btn { min-height: 48px; font-size: 18px; }
+.login-note { margin: 20px 0 0; text-align: center; color: var(--ink-soft); font-size: 14px; }
+.account-name { font-weight: 700; color: var(--blue-d); }

@@ -10,7 +10,7 @@ const body = html.split('<body>')[1].split('</body>')[0]
   .replace(/\s*<link rel="stylesheet" href="css\/style.css">/, '');
 
 const css = rd('css/style.css');
-const js = ['js/art.js', 'js/fx.js', 'js/levels-build.js', 'js/levels-fix.js', 'js/game.js'].map(rd).join('\n\n');
+const js = ['js/art.js', 'js/fx.js', 'js/levels-build.js', 'js/levels-fix.js', 'js/game.js', 'js/accounts.js', 'js/auth.js'].map(rd).join('\n\n');
 const FONT = '<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">';
 const END = '<' + '/script>';
 
