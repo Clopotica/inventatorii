@@ -3,8 +3,10 @@
    Motorul jocului: stare, progres, ecrane, cele două moduri
    de joc (construcție și investigație), stele și insigne.
    ============================================================ */
-(function () {
+window.startInventatorii = function (username) {
   'use strict';
+  if (window.startInventatorii.started) return;
+  window.startInventatorii.started = true;
 
   var ART = window.ART, FX = window.FX;
 
@@ -50,7 +52,7 @@
   /* ============================================================
      STAREA JOCULUI (salvată în localStorage)
      ============================================================ */
-  var KEY = 'inventatorii.v1';
+  var KEY = 'inventatorii.v1.' + username;
   var S = {
     mod: 'mediu', sunet: true, voce: false, vocePref: '',
     prog: { build: {}, fix: {} },   // index nivel -> stele (1..3)
@@ -1103,7 +1105,9 @@
   fit();
 
   /* mesaj de bun venit la prima rulare */
-  if (!localStorage.getItem(KEY)) {
+  var hasProgress = false;
+  try { hasProgress = !!localStorage.getItem(KEY); } catch (e) { }
+  if (!hasProgress) {
     setTimeout(function () {
       showModal(
         ART.character('bit', 'bucuros') +
@@ -1116,4 +1120,4 @@
       $('go').onclick = function () { FX.sfx.win(); closeModal(); save(); };
     }, 500);
   }
-})();
+};

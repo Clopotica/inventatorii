@@ -13,6 +13,28 @@
 </head>
 <body>
 
+<main id="loginWall" class="login-wall">
+  <form id="loginForm" class="login-card">
+    <div class="login-icon" aria-hidden="true">💡</div>
+    <h1>INVENTATORII</h1>
+    <p>Intră în atelierul de idei!</p>
+    <label for="loginUser">Utilizator</label>
+    <input id="loginUser" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="32" placeholder="Numele tău de utilizator" required>
+    <label for="loginPassword">Parolă</label>
+    <div class="password-field">
+      <input id="loginPassword" name="password" type="password" autocomplete="current-password" maxlength="128" required>
+      <button id="togglePassword" type="button" aria-label="Arată parola" aria-pressed="false">Arată</button>
+    </div>
+    <p id="loginError" class="login-error" role="alert" aria-live="polite"></p>
+    <button id="loginSubmit" class="btn" type="submit">Intră în joc →</button>
+    <p class="login-note">Folosește contul primit de la profesor.</p>
+    <noscript>Activează JavaScript în browser pentru a intra în joc.</noscript>
+  </form>
+</main>
+
+<div id="gameRoot" hidden inert>
+
+
 <!-- pânza pentru confetti / scântei -->
 <canvas id="fxcanvas"></canvas>
 
@@ -52,6 +74,8 @@
     </div>
 
     <div class="menu-row">
+      <span class="account-name" id="currentUser"></span>
+      <button class="btn ghost" id="btnLogout">Ieși din cont</button>
       <button class="btn ghost" id="btnHelp">❓ Cum se joacă</button>
       <button class="btn ghost" id="btnAlbum">📔 Albumul meu</button>
       <button class="icon-btn" id="btnSound" title="Sunet">🔊</button>
@@ -101,10 +125,14 @@
 <!-- ============ FERESTRE ============ -->
 <div class="modal-bg" id="modalBg"><div class="modal" id="modal"></div></div>
 
+</div>
+
 <script src="js/art.js"></script>
 <script src="js/fx.js"></script>
 <script src="js/levels-build.js"></script>
 <script src="js/levels-fix.js"></script>
 <script src="js/game.js"></script>
+<script src="js/accounts.js"></script>
+<script src="js/auth.js"></script>
 </body>
 </html>
